@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'mumachat'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4C4FBB934A9947E282657B6E299ED19E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4B5861A1FD7439F85424270B2F05116 }}
