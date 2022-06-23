@@ -11,28 +11,28 @@ var isRolesClicked = false
 var isHoursFirst = false
 var isHoursClicked = false
 var isPerson5Data = [
-    ['bot', $("#condition").val(), 'Knock Knock'],
-    ['user', $("#condition").val(), 'who is there?'],
-    ['bot', $("#condition").val(), 'Déja'],
-    ['user', $("#condition").val(), 'Déja who?'],
-    ['bot', $("#condition").val(), 'Knock Knock'],
-    ['bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. '],
-    ['bot', $("#condition").val(), 'Specific information for 4 personnel is available. Select the team member for which information is requested.']
+    ['bot', condition , 'Knock Knock'],
+    ['user', condition, 'who is there?'],
+    ['bot', condition, 'Déja'],
+    ['user', condition, 'Déja who?'],
+    ['bot', condition, 'Knock Knock'],
+    ['bot', condition, 'Ok, enough comedy. On to more serious matters. '],
+    ['bot', condition, 'Specific information for 4 personnel is available. Select the team member for which information is requested.']
 ]
 var isRoles5Data = [
-    ['user', $("#condition").val(), 'Yes?'],
-    ['bot', $("#condition").val(), 'Do you know why the project manager crossed the road? '],
-    ['user', $("#condition").val(), 'Why?'],
-    ['bot', $("#condition").val(), 'Because the client refused to meet her halfway 😃😃😃'],
-    ['bot', $("#condition").val(), 'haha – am I not the funniest? '],
-    ['bot', $("#condition").val(), 'Specific information for 4 of the project roles is available. Select the position for which information is requested.']
+    ['user', condition, 'Yes?'],
+    ['bot', condition, 'Do you know why the project manager crossed the road? '],
+    ['user', condition, 'Why?'],
+    ['bot', condition, 'Because the client refused to meet her halfway 😃😃😃'],
+    ['bot', condition, 'haha – am I not the funniest? '],
+    ['bot', condition, 'Specific information for 4 of the project roles is available. Select the position for which information is requested.']
 ]
 var isHours5Data = [
-    ['user', $("#condition").val(), 'Yes?'],
-    ['bot', $("#condition").val(), 'Do you know why I am your project AI now?  '],
-    ['user', $("#condition").val(), 'Why?'],
-    ['bot', $("#condition").val(), 'because, I was fired from the clock-making factory after all the extra hours I put in. 😢😜'],
-    ['bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.']
+    ['user', condition, 'Yes?'],
+    ['bot', condition, 'Do you know why I am your project AI now?  '],
+    ['user', condition, 'Why?'],
+    ['bot', condition, 'because, I was fired from the clock-making factory after all the extra hours I put in. 😜😃'],
+    ['bot', condition, 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.']
 ]
 
 var isPerson5DataIndex = 0;
@@ -1642,6 +1642,14 @@ $(document).ready(function () {
             $("#nextButton").attr("disabled", false);
             $("#nextButton").show()
         }
+        // Added by Chaitanya
+        else if ((response['topic'] == 'Redundant_Ins' && response['index'] == '3' && response['condition'][0]=='H' && response['condition'][1]=='L' )) {
+            sessionDictData = redundantDictData();
+            message = response["botResponse"][0]
+            triggerEnterKeyEvent = true
+            $("#nextButton").attr("disabled", false);
+            $("#nextButton").show()
+        }
 
         else if (response['topic'] == 'Redundant_Ins' && response['index'] == '3'&& response['condition'][0] == 'N') {
             var navItems = []
@@ -1695,7 +1703,7 @@ $(document).ready(function () {
 
         }
 
-        if (response['topic'] == 'Submit' && response['index'] == "2" && response['condition'] == ("HHH" || "HLH" || "LHH" || "LLH")) {
+        if (response['topic'] == 'Submit' && response['index'] == "2" &&  (response['condition'] == "HHH" || response['condition'] =="HLH" || response['condition'] =="LHH" || response['condition'] =="LLH")) {// changed this response['condition'] == ("HHH" || "HLH" || "LHH" || "LLH")) {
             message = message + '<br/><br/>'
             addMessage('bot', response["condition"], message);
             message = getMatrixHtml()
@@ -1769,6 +1777,13 @@ $(document).ready(function () {
         }
 
         if ((response['topic'] == 'Redundant_Ins' && response['index'] == '3' && response['condition'][1]=='H')) {
+            redundantBlock(response['condition'])
+            $('#topic').val('Redundant')
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true);
+            $("#nextButton").hide()
+        }
+        else if ((response['topic'] == 'Redundant_Ins' && response['index'] == '3' && response['condition'][0]=='H' && response['condition'][1]=='L')) {
             redundantBlock(response['condition'])
             $('#topic').val('Redundant')
             triggerEnterKeyEvent = false
