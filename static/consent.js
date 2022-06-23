@@ -32,15 +32,16 @@ $(document).ready(function () {
         if (uid.length > 0) {
             $("#uidError").hide()
             for (var i = 0; i < uid.length; i++) {
-                if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57) {
+                if ((uid.charCodeAt(i) >= 97 && uid.charCodeAt(i) <= 122)||(uid.charCodeAt(i) >= 65 && uid.charCodeAt(i) <= 90)||(uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57)) {
                     $("#uidValidError").hide()
                 }
-                else {
-                    $("#uidValidError").hide()
-                    break;
+            else {
+                $("#uidValidError").show() 
+                break;
                 }
-            }
         }
+    
+    }
         else {
             $("#uidError").show()
         }
@@ -55,7 +56,7 @@ $(document).ready(function () {
         var uid = $('#participantUid').val().trim();
         console.log("participant", $('#participantUid'))
         console.log("uid", uid)
-        var isUidValid = true
+        var isUidValid = false
         var isAllValid = false
         var option = $("input[type=radio][name=optradio]:checked").val()
         
