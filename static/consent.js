@@ -42,6 +42,7 @@ $(document).ready(function () {
             }
         
         }
+        
         else {
             $("#uidError").show()
         }
