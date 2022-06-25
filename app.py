@@ -19,17 +19,17 @@ class Chatbot:
     def getJson(self):
         #fileName = os.getcwd()+'\\static\\tutorial\\content.json'
         fileName = os.getcwd()+'/static/tutorial/content.json'
-        with open(fileName) as json_data:
+        with open(fileName, encoding='utf-8') as json_data:
             self.jsonData = json.load(json_data)
 
         #fileName = os.getcwd()+'\\static\\tutorial\\clues.json'
         fileName = os.getcwd()+'/static/tutorial/clues.json'
-        with open(fileName) as json_data:
+        with open(fileName, encoding='utf-8') as json_data:
             self.clueData = json.load(json_data)
 
         #fileName = os.getcwd()+'\\static\\tutorial\\conditions.json'
         fileName = os.getcwd()+'/static/tutorial/conditions.json'
-        with open(fileName) as json_data:
+        with open(fileName, encoding='utf-8') as json_data:
             self.conditionData = json.load(json_data)
 
     
@@ -271,7 +271,7 @@ def getSession():
     fileName = os.getcwd()+'/static/tutorial/availableLimit.json'
     allowedLimit = None
     randomCondition = 0
-    with open(fileName) as json_data:
+    with open(fileName, encoding='utf-8') as json_data:
         allowedLimit = json.load(json_data)
     #print(allowedLimit)
     availableConditions = [condition[0] for condition in list(allowedLimit.items()) if condition[1] !=0] 
@@ -289,7 +289,7 @@ def getSession():
     allowedLimit[randomCondition] = currentLimit-1
     sessionId = chatbot.insertConsent(None,name,uid,randomCondition)
     print(sessionId)
-    with open(fileName, 'w') as outfile:
+    with open(fileName, 'w', encoding='utf-8') as outfile:
         json.dump(allowedLimit, outfile)
     return jsonify({"condition":randomCondition,"sessionId":sessionId, "uid":uid})
 
@@ -440,7 +440,7 @@ def getRedundantClueById():
 #@app.route('/getJson',methods=['GET'])
 #def getJson():
 #    fileName = os.getcwd()+'\\static\\tutorial\\content.json'
-#    with open(fileName) as json_data:
+#    with open(fileName, encoding='utf-8') as json_data:
 #        content= json.load(json_data)
 #        return jsonify({"jsonContent":content})
 

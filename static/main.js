@@ -4,9 +4,40 @@ var tutorialMsgs = []
 var triggerEnterKeyEvent = true
 var sessionDictData = {}
 var currentClue = {}
-var isPersonFirst = true
-var isRolesFirst = true
-var isHoursFirst = true
+var isPersonFirst = false
+var isPersonClicked = false
+var isRolesFirst = false
+var isRolesClicked = false
+var isHoursFirst = false
+var isHoursClicked = false
+var isPerson5Data = [
+    ['bot', condition , 'Knock Knock'],
+    ['user', condition, 'who is there?'],
+    ['bot', condition, 'Déja'],
+    ['user', condition, 'Déja who?'],
+    ['bot', condition, 'Knock Knock'],
+    ['bot', condition, 'Ok, enough comedy. On to more serious matters. '],
+    ['bot', condition, 'Specific information for 4 personnel is available. Select the team member for which information is requested.']
+]
+var isRoles5Data = [
+    ['user', condition, 'Yes?'],
+    ['bot', condition, 'Do you know why the project manager crossed the road? '],
+    ['user', condition, 'Why?'],
+    ['bot', condition, 'Because the client refused to meet her halfway 😃😃😃'],
+    ['bot', condition, 'haha – am I not the funniest? '],
+    ['bot', condition, 'Specific information for 4 of the project roles is available. Select the position for which information is requested.']
+]
+var isHours5Data = [
+    ['user', condition, 'Yes?'],
+    ['bot', condition, 'Do you know why I am your project AI now?  '],
+    ['user', condition, 'Why?'],
+    ['bot', condition, 'because, I was fired from the clock-making factory after all the extra hours I put in. 😜😃'],
+    ['bot', condition, 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.']
+]
+
+var isPerson5DataIndex = 0;
+var isRoles5DataIndex = 0;
+var isHours5DataIndex = 0;
 $(document).ready(function () {
     //alert(localStorage.getItem("sessionId"))
 
@@ -97,10 +128,75 @@ $(document).ready(function () {
             });
 
 
+            // $("#nextButton").click(function (e) {
+            //     triggerEnterKeyEvent = false;
+            //     if (((isPersonFirst) && $('#condition').val() == 'HHHC' || (isPersonFirst) && $('#condition').val() == 'HHLC') && isPerson5DataIndex < isPerson5Data.length && isPersonClicked) {
+            //         console.log('herer')
+            //         addMessage(isPerson5Data[isPerson5DataIndex][0], isPerson5Data[isPerson5DataIndex][1], isPerson5Data[isPerson5DataIndex][2])
+            //         isPerson5DataIndex = isPerson5DataIndex + 1;
+            //         if (isPerson5DataIndex === isPerson5Data.length) {
+            //             var navItems = []
+            //             navItems = ["Alex", "Leon", "Rachel", "Tina"]
+            //             userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
+            //             addActionBlock(userActionBlock)
+            //             isPersonFirst = false;
+            //         }
+            //     } else {
+            //         isPerson5DataIndex = 0;
+            //         isPersonFirst = false;
+            //         getDataEvent();
+            //     }
+            // });
+
             $("#nextButton").click(function (e) {
                 triggerEnterKeyEvent = false;
-                getDataEvent();
+                if (((isPersonFirst) && $('#condition').val() == 'HHHC' || (isPersonFirst) && $('#condition').val() == 'HHLC') && isPerson5DataIndex < isPerson5Data.length && isPersonClicked) {
+                    console.log('herer')
+                    addMessage(isPerson5Data[isPerson5DataIndex][0], isPerson5Data[isPerson5DataIndex][1], isPerson5Data[isPerson5DataIndex][2])
+                    isPerson5DataIndex = isPerson5DataIndex + 1;
+                    if (isPerson5DataIndex === isPerson5Data.length) {
+                        var navItems = []
+                        navItems = ["Alex", "Leon", "Rachel", "Tina"]
+                        userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
+                        addActionBlock(userActionBlock)
+                        isPersonFirst = false;
+                    }
+                }
+				else if (((isRolesFirst) && $('#condition').val() == 'HHHC' || (isRolesFirst) && $('#condition').val() == 'HHLC') && isRoles5DataIndex < isRoles5Data.length && isRolesClicked) {
+                    console.log('herer')
+                    addMessage(isRoles5Data[isRoles5DataIndex][0], isRoles5Data[isRoles5DataIndex][1], isRoles5Data[isRoles5DataIndex][2])
+                    isRoles5DataIndex = isRoles5DataIndex + 1;
+                    if (isRoles5DataIndex === isRoles5Data.length) {
+                        var navItems = []
+                       navItems = ["Network <br /> Architect", "Systems <br /> Analyst", "Cybersecurity <br /> Specialist", "Database <br /> Administrator"]
+                        userActionBlock = buildUserActionButtonGroup(navItems, condition, 'roles')
+                        addActionBlock(userActionBlock)
+                        isRolesFirst = false;
+                    }
+                } 
+				else if (((isHoursFirst) && $('#condition').val() == 'HHHC' || (isHoursFirst) && $('#condition').val() == 'HHLC') && isHours5DataIndex < isHours5Data.length && isHoursClicked) {
+                    console.log('herer')
+                    addMessage(isHours5Data[isHours5DataIndex][0], isHours5Data[isHours5DataIndex][1], isHours5Data[isHours5DataIndex][2])
+                    isHours5DataIndex = isHours5DataIndex + 1;
+                    if (isHours5DataIndex === isHours5Data.length) {
+                        var navItems = []
+                        navItems = ["6", "8", "10", "12"]
+                        userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
+                        addActionBlock(userActionBlock)
+                        isHoursFirst = false;
+                    }
+                } 
+				else {
+                    isPerson5DataIndex = 0;
+                    isRoles5DataIndex = 0;
+                    isHours5DataIndex = 0;
+                    isPersonFirst = false;
+                    isRolesFirst = false;
+                    isHoursFirst = false;
+                    getDataEvent();
+                }
             });
+
 
             $(document.body).on("click", ".showNextClue", function () {
                 var message = getButtonText('showNextClue')
@@ -160,25 +256,54 @@ $(document).ready(function () {
                 var element = document.getElementById("chatDiv");
                 element.removeChild(element.childNodes[element.childNodes.length - 1]);
                 addMessage('user', $("#condition").val(), message)
+                //addMessage('bot', $("#condition").val(), 'Specific information for 4 personnel is available. Select the team member for which information is requested.');
+                //var navItems = []
+                //navItems = ["Alex", "Leon", "Rachel", "Tina"]
+                //userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
+                // $('#topic').val('Person')
+                // $('#index').val('0')
+                if (!isPersonClicked) {
+                    isPersonFirst = true    
+                }
+                isPerson5DataIndex = 0
+                if (((isPersonFirst) && $('#condition').val() == 'HHHC' || (isPersonFirst) && $('#condition').val() == 'HHLC') && !isPersonClicked) {
+                isPersonClicked = true
+                $("#nextButton").attr("disabled", false);
+                $("#nextButton").show();
+                //getperson();
+                // $("#nextButton").click(function (e) {
+                //     triggerEnterKeyEvent = false;
+                //     addMessage('bot', $("#condition").val(), 'Not so fast!');
+                // });
+                // $("#nextButton").click(function (e) {
+                //     triggerEnterKeyEvent = false;
+                //     addMessage('bot', $("#condition").val(), 'Not so fast!');
+                // });
+                addMessage('bot', $("#condition").val(), 'Not so fast!');
+                
+                }
+                else {
                 addMessage('bot', $("#condition").val(), 'Specific information for 4 personnel is available. Select the team member for which information is requested.');
                 var navItems = []
                 navItems = ["Alex", "Leon", "Rachel", "Tina"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
-                // $('#topic').val('Person')
-                // $('#index').val('0')
-                if (isPersonFirst) {
-                isPersonFirst = false;
-                addMessage('bot', $("#condition").val(), 'Not so fast!');
-                addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('user', $("#condition").val(), 'who is there?')
-                addMessage('bot', $("#condition").val(), 'Déja');
-                addMessage('user', $("#condition").val(), 'Déja who?')
-                addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. ');
-                }
                 addActionBlock(userActionBlock)
+                }
+                // else{
+                //     addActionBlock(userActionBlock)
+                // }
+                //addActionBlock(userActionBlock)
 
             });
+        
+            // function getperson() {
+            //     if(i==1)
+            //     {
+            //     addMessage('bot', $("#condition").val(), 'Not so fast!');
+            //     $("#nextButton").attr("disabled", false);
+            //     $("#nextButton").show();
+            //     }
+            // };
 
             $(document.body).on('click', '.alex', function (event) {
                 var message = getButtonText('alex')
@@ -457,26 +582,54 @@ $(document).ready(function () {
                 }
             });
 
+            // $(document.body).on('click', '.roles', function (event) {
+            //     var message = getButtonText('roles')
+            //     var element = document.getElementById("chatDiv");
+            //     element.removeChild(element.childNodes[element.childNodes.length - 1]);
+            //     addMessage('user', $("#condition").val(), message)
+            //     addMessage('bot', $("#condition").val(), 'Specific information for 4 of the project roles is available. Select the position for which information is requested.');
+            //     var navItems = []
+            //     navItems = ["Network <br /> Architect", "Systems <br /> Analyst", "Cybersecurity <br /> Specialist", "Database <br /> Administrator"]
+            //     userActionBlock = buildUserActionButtonGroup(navItems, condition, 'roles')
+            //     if ((isRolesFirst) && $('#condition').val() == 'HHHC' || (isRolesFirst) && $('#condition').val() == 'HHLC') 
+            //     {
+            //       isRolesFirst = false;
+            //     addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
+            //     addMessage('user', $("#condition").val(), 'Yes?')
+            //     addMessage('bot', $("#condition").val(), 'Do you know why the project manager crossed the road? '); 
+            //     addMessage('user', $("#condition").val(), 'Why?')
+            //     addMessage('bot', $("#condition").val(), 'Because the client refused to meet her halfway 😃😃😃');
+            //     addMessage('bot', $("#condition").val(), 'haha – am I not the funniest?  ');
+            //     }
+            //     addActionBlock(userActionBlock)
+            // });
+
             $(document.body).on('click', '.roles', function (event) {
                 var message = getButtonText('roles')
                 var element = document.getElementById("chatDiv");
                 element.removeChild(element.childNodes[element.childNodes.length - 1]);
                 addMessage('user', $("#condition").val(), message)
-                addMessage('bot', $("#condition").val(), 'Specific information for 4 of the project roles is available. Select the position for which information is requested.');
+				
+				if (!isRolesClicked) {
+                    isRolesFirst = true    
+                }
+                isRoles5DataIndex = 0
+                
+                if (((isRolesFirst) && $('#condition').val() == 'HHHC' || (isRolesFirst) && $('#condition').val() == 'HHLC') && !isRolesClicked)
+                {
+                    isRolesClicked = true;
+                  $("#nextButton").attr("disabled", false);
+                  $("#nextButton").show();
+                addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
+                
+                }
+				else{
+				addMessage('bot', $("#condition").val(), 'Specific information for 4 of the project roles is available. Select the position for which information is requested.');
                 var navItems = []
                 navItems = ["Network <br /> Architect", "Systems <br /> Analyst", "Cybersecurity <br /> Specialist", "Database <br /> Administrator"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'roles')
-                if(isRolesFirst)
-                {
-                  isRolesFirst = false;
-                addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
-                addMessage('user', $("#condition").val(), 'Yes?')
-                addMessage('bot', $("#condition").val(), 'Do you know why the project manager crossed the road? '); 
-                addMessage('user', $("#condition").val(), 'Why?')
-                addMessage('bot', $("#condition").val(), 'Because the client refused to meet her halfway 😃😃😃');
-                addMessage('bot', $("#condition").val(), 'haha – am I not the funniest?  ');
-                }
                 addActionBlock(userActionBlock)
+				}
             });
 
             $(document.body).on('click', '.networkArchitect', function (event) {
@@ -744,25 +897,52 @@ $(document).ready(function () {
                 }
             });
 
+            // $(document.body).on('click', '.hours', function (event) {
+            //     var message = getButtonText('hours')
+            //     var element = document.getElementById("chatDiv");
+            //     element.removeChild(element.childNodes[element.childNodes.length - 1]);
+            //     addMessage('user', $("#condition").val(), message)
+            //     addMessage('bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.');
+            //     var navItems = []
+            //     navItems = ["6", "8", "10", "12"]
+            //     userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
+            //     if ((isHoursFirst) && $('#condition').val() == 'HHHC' || (isHoursFirst) && $('#condition').val() == 'HHLC') 
+            //     {
+            //         isHoursFirst = false;
+            //     addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
+            //     addMessage('user', $("#condition").val(), 'Yes?')
+            //     addMessage('bot', $("#condition").val(), 'Do you know why I am your project AI now?  '); 
+            //     addMessage('user', $("#condition").val(), 'Why?')
+            //     addMessage('bot', $("#condition").val(), 'because, I was fired from the clock-making factory after all the extra hours I put in. 😢😜');
+            //     }
+            //     addActionBlock(userActionBlock)
+            // });
             $(document.body).on('click', '.hours', function (event) {
                 var message = getButtonText('hours')
                 var element = document.getElementById("chatDiv");
                 element.removeChild(element.childNodes[element.childNodes.length - 1]);
                 addMessage('user', $("#condition").val(), message)
-                addMessage('bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.');
+				
+				if (!isHoursClicked) {
+                    isHoursFirst = true    
+                }
+                isPerson5DataIndex = 0
+              
+                if (((isHoursFirst) && $('#condition').val() == 'HHHC' || (isHoursFirst) && $('#condition').val() == 'HHLC') && !isHoursClicked)
+                {
+                 isHoursClicked = true;
+				 $("#nextButton").attr("disabled", false);
+                $("#nextButton").show();
+                addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
+               
+                }
+				else{
+				addMessage('bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.');
                 var navItems = []
                 navItems = ["6", "8", "10", "12"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
-                if(isHoursFirst) 
-                {
-                    isHoursFirst = false;
-                addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
-                addMessage('user', $("#condition").val(), 'Yes?')
-                addMessage('bot', $("#condition").val(), 'Do you know why I am your project AI now?  '); 
-                addMessage('user', $("#condition").val(), 'Why?')
-                addMessage('bot', $("#condition").val(), 'because, I was fired from the clock-making factory after all the extra hours I put in. 😢😜');
-                }
                 addActionBlock(userActionBlock)
+				}
             });
 
             $(document.body).on('click', '.six', function (event) {
@@ -1166,7 +1346,7 @@ $(document).ready(function () {
                 addThinking('bot', response["condition"])
                 //$("#nextButton").attr("disabled", true);
                 setTimeout(function () {
-                    if (response['condition'][2] == 'H') {
+                    if (response['condition'][2] == 'H' || response['condition'][2] == 'L') {
                         if (response['topic'] == 'Tutorial' && response['index'] == '2') {
                             $('#clickableGrid').show()
                             $('#demoTable').show()
@@ -1433,83 +1613,6 @@ $(document).ready(function () {
             $('#index').val('5');
             triggerEnterKeyEvent = true
         }
-
-        //Chaitanya for fixed responses - START
-        // response['condition'][0] == 'H')
-        else if (response['topic']=='Introduction' && response['index'] == '3' && ( (response['condition'] == 'HHHC')||(response['condition'] == 'HHLC'))){
-            var navItems = []
-            navItems = ["It is nice to meet you too!"]
-            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'niceToMeet')
-            message = response["botResponse"][0]
-            triggerEnterKeyEvent = false
-            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
-            $("#nextButton").hide() // change to show if you want to  see the next button
-            istriggerEnterKeyEventActive = false
-
-        }
-        else if (response['topic']=='Introduction' && response['index'] == '7' && response['condition'][0] == 'H'){
-            var navItems = []
-            navItems = ["Yes"]
-            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'responseYes')
-            message = response["botResponse"][0]
-            triggerEnterKeyEvent = false
-            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
-            $("#nextButton").hide() // change to show if you want to  see the next button
-            istriggerEnterKeyEventActive = false
-
-        }
-
-        else if (response['topic']=='Tutorial' && response['index'] == '3' && response['condition'][0] == 'H'){
-            var navItems = []
-            navItems = ["Sound great!"]
-            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'soundsGreat')
-            message = response["botResponse"][0]
-            triggerEnterKeyEvent = false
-            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
-            $("#nextButton").hide() // change to show if you want to  see the next button
-            istriggerEnterKeyEventActive = false
-
-        }
-
-        else if (response['topic']=='Tutorial' && response['index'] == '4' && response['condition'][0] == 'H'){
-            var navItems = []
-            navItems = ["Yes! Let's do it."]
-            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'letsDo')
-            message = response["botResponse"][0]
-            triggerEnterKeyEvent = false
-            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
-            $("#nextButton").hide() // change to show if you want to  see the next button
-            istriggerEnterKeyEventActive = false
-
-        }
-        
-        else if (response['topic']=='Tutorial' && response['index'] == '23' && response['condition'][0] == 'H'){
-            var navItems = []
-            navItems = ["Yes! Let's GO."]
-            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'letsDo')
-            message = response["botResponse"][0]
-            triggerEnterKeyEvent = false
-            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
-            $("#nextButton").hide() // change to show if you want to  see the next button
-            istriggerEnterKeyEventActive = false
-
-        }
-
-        else if (response['topic']=='Task Reminder' && response['index'] == '2' && response['condition'][0] == 'H'){
-            var navItems = []
-            navItems = ["Got it!"]
-            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'letsDo')
-            message = response["botResponse"][0]
-            triggerEnterKeyEvent = false
-            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
-            $("#nextButton").hide() // change to show if you want to  see the next button
-            istriggerEnterKeyEventActive = false
-
-        }
-
-
-     //Chaitanya for fixed responses - END
-
         else if (response['topic'] == 'Clue_End_Ins') {
             triggerEnterKeyEvent = true
             $("#nextButton").attr("disabled", false);
@@ -1533,6 +1636,14 @@ $(document).ready(function () {
         }
 
         else if ((response['topic'] == 'Redundant_Ins' && response['index'] == '3' && response['condition'][1] == 'H')) {
+            sessionDictData = redundantDictData();
+            message = response["botResponse"][0]
+            triggerEnterKeyEvent = true
+            $("#nextButton").attr("disabled", false);
+            $("#nextButton").show()
+        }
+        // Added by Chaitanya
+        else if ((response['topic'] == 'Redundant_Ins' && response['index'] == '3' && response['condition'][0]=='H' && response['condition'][1]=='L' )) {
             sessionDictData = redundantDictData();
             message = response["botResponse"][0]
             triggerEnterKeyEvent = true
@@ -1564,10 +1675,6 @@ $(document).ready(function () {
 
         else {
             message = response["botResponse"][0];
-            triggerEnterKeyEvent = false
-            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
-            $("#nextButton").show() // change to show if you want to  see the next button
-            istriggerEnterKeyEventActive = false
         }
         if (response['topic'] == 'Clue') {
 
@@ -1596,7 +1703,7 @@ $(document).ready(function () {
 
         }
 
-        if (response['topic'] == 'Submit' && response['index'] == "2" && response['condition'] == ("HHH" || "HLH" || "LHH" || "LLH")) {
+        if (response['topic'] == 'Submit' && response['index'] == "2" &&  (response['condition'] == "HHH" || response['condition'] =="HLH" || response['condition'] =="LHH" || response['condition'] =="LLH")) {// changed this response['condition'] == ("HHH" || "HLH" || "LHH" || "LLH")) {
             message = message + '<br/><br/>'
             addMessage('bot', response["condition"], message);
             message = getMatrixHtml()
@@ -1670,6 +1777,13 @@ $(document).ready(function () {
         }
 
         if ((response['topic'] == 'Redundant_Ins' && response['index'] == '3' && response['condition'][1]=='H')) {
+            redundantBlock(response['condition'])
+            $('#topic').val('Redundant')
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true);
+            $("#nextButton").hide()
+        }
+        else if ((response['topic'] == 'Redundant_Ins' && response['index'] == '3' && response['condition'][0]=='H' && response['condition'][1]=='L')) {
             redundantBlock(response['condition'])
             $('#topic').val('Redundant')
             triggerEnterKeyEvent = false
@@ -1782,7 +1896,6 @@ $(document).ready(function () {
                 //}
 
             }
-            
             else if (type == 'redundantConfirmation') {
                 if (i == 0) {
                     html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:10px">`
@@ -1884,59 +1997,6 @@ $(document).ready(function () {
                     html += `<button type="button" class="btn btn-secondary twelve" style="font-size:10px">`
                 }
             }
-
-            html += content[i]
-            html += `</button></div>`
-        }
-
-        html += `</div></div></div></div>`
-
-        return html;
-    }
-    
-    // Function for fixed used response buttons  
-    function fixedUserResponseButtonsGroup(content, condition, type, explanationBlock) {
-        var html = ''
-        html += `<div class='actionBlock' style="margin: 26px 0 26px;overflow: hidden;">
-                        <div style="display: inline-block;text-align: right;width: 100%;">
-                            <div style="display: inline-block;">
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">`
-        for (var i = 0; i < content.length; i++) {
-            html += `<div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">`
-            if (type == 'clueSelection') {
-                if (i == 0) {
-                    html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:10px">`
-                }
-                else if (i == 1) {
-                    html += `<button type="button" class="btn btn-secondary showMatrixGrid" style="font-size:10px">`
-                }
-
-
-            }
-            // chaitanya fixed reponse buttons
-
-            else if (type == 'niceToMeet') {
-                html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:20px">`
-            }
-            /*else if (type == 'niceToMeet') {
-            var msg = 'Nice To Meet You'
-            html += `<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><p style='word-wrap: break-word'><button type='button' class='btn btn-secondary' style='font-size:10px'>" + msg + "</button></p></div></div>`
-            }*/
-
-            else if (type == 'responseYes') {
-                html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:20px">`
-            }
-
-            else if (type == 'soundsGreat') {
-                html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:20px">`
-            }
-
-            else if (type == 'letsDo') {
-                html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:20px">`
-            }
-
-            //chaitu - end
- 
 
             html += content[i]
             html += `</button></div>`
@@ -2319,7 +2379,6 @@ $(document).ready(function () {
         var html = '';
         if (type == 'user') {
             html = "<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><p style='word-wrap: break-word'>" + message + "</p></div></div>"
-            //html = "<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><p style='word-wrap: break-word'><button type='button' class='btn btn-secondary showNextClue' style='font-size:10px'>" + message + "</button></p></div></div>"
         }
         else if (type == 'bot') {
             if (condition[1] == 'H') {
@@ -2431,6 +2490,7 @@ $(document).ready(function () {
                                 //console.log(response)
                             }
                         });
+                        
                     }
                 });
 
