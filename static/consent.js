@@ -64,13 +64,14 @@ $(document).ready(function () {
             if (!isAllValid) {
                 var isnameAvailable = false
                 var isuidAvailable = false
-                if (uid.length == 8) {
+                // Validating the Mturk Id if it is 14 digit alphanumeric 
+                if (uid.length == 14) {
                     for (var i = 0; i < uid.length; i++) {
-                        if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57 ) {
+                        if ((uid.charCodeAt(i) >= 97 && uid.charCodeAt(i) <= 122)||(uid.charCodeAt(i) >= 65 && uid.charCodeAt(i) <= 90)||(uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57)) {
                             isUidValid = true
                         }
                         else {
-                            isUidValid = true;
+                            isUidValid = false;
                             break;
                         }
                     }
@@ -90,11 +91,11 @@ $(document).ready(function () {
                 else {
                     isuidAvailable = true
                 }
-                if (!isUidValid) {
-                    $("#uidValidError").show()
+                if (isUidValid) {
+                    $("#uidValidError").hide()
                 }
                 else {
-                    $("#uidValidError").hide()
+                    $("#uidValidError").show()
                 }
 
                 if (isnameAvailable && isuidAvailable && isUidValid) {
