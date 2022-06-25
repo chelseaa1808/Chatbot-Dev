@@ -92,7 +92,8 @@ $(document).ready(function () {
                     isuidAvailable = true
                 }
                 if (isUidValid) {
-                    $("#uidValidError").hide()
+                    $("#uidValidError").hide() 
+                    
                 }
                 else {
                     $("#uidValidError").show()
