@@ -7,7 +7,7 @@
     },
     "Tutorial": {
       "1": "In the following messages, an example will be described which will demonstrate how to use the information grid.",
-      "2": "Example Scenario: 5 people will each be given a gift. Each gift needs to be wrapped in each person's favorite color. No one can receive the same gift or the same color of wrapping paper.",
+      "2": "Example Scenario: 5 people will each be given a gift. Each gift needs to be wrapped in each person's favorite color. No one can receive the same gift.",
       "3": "The grid for this example is provided in the panel to the right. Markings should be placed on the grid as instructed throughout the tutorial."
     },
     "Task Reminder": {
@@ -24,8 +24,7 @@
       "1": "These 5 major pieces of information listed above contain all of the requirements for the project. They are sufficient for making all of the appropriate team assignments.",
       "2": "Additional - but redundant - information may now be requested for specific people, roles, or office locations.",
       "3": "Note: The available information is redundant because it has already been provided by the 5 clues above. However, the information will be worded differently to address only the specific information that has been requested.",
-      "4": "Is additional information requested?",
-      "5": "Reminder: Final decisions may be made at any time by entering assignments in the table and clicking 'Submit Answer'"
+      "4": "Reminder: Final decisions may be made at any time by entering assignments in the table and clicking 'Submit Answer'"
     },
     "Submit": {
       "1": "Status: All available information has been provided. Final decisions may be submitted.",

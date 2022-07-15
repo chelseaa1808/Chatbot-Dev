@@ -1567,7 +1567,7 @@ $(document).ready(function () {
             //window.setTimeout(function () { location.reload() }, 3000)
             let cond=Number(window.location.pathname.split("/")[1])
             if (cond<5){
-            window.location.replace("https://usf.az1.qualtrics.com/jfe/form/SV_bjSxk2rNGebGUi9")}
+            window.location.replace("https://usf.az1.qualtrics.com/jfe/form/SV_1OgtMzHdL1BMbBk")}
             else{
                 window.location.replace("https://www.google.com")
             }
@@ -1814,7 +1814,7 @@ $(document).ready(function () {
 
             //alert("Task Completed. Click OK. Page will refresh in 3 seconds")
             //window.setTimeout(function () { location.reload() }, 3000)
-            window.location.replace("https://usf.az1.qualtrics.com/jfe/form/SV_bjSxk2rNGebGUi9")
+            window.location.replace("https://usf.az1.qualtrics.com/jfe/form/SV_1OgtMzHdL1BMbBk")
         }
 
 

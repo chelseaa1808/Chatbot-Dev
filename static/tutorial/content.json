@@ -12,11 +12,11 @@
 		"Tutorial": {	
 			"1": "Great! And don’t' worry! I will help you every step of the way. This is what I will do.",
 			"2": "I will provide you some basic information to start with. But I have lot more to give! :D",
-			"3": "If you want more information at any point, all you have to do is ask and I will be more than happy to guide you along!! What do you think?",
-			"4": "Before we start, I would like to give you a quick training of how to use the information grid to mark your decisions and keep track of your choices. I’ll use a running example to teach you how to use the information grid. Then you can work on the actual simulation yourself. Sounds good?",
+			"3": "If you want more information at any point, all you have to do is ask and I will be more than happy to guide you along!!",
+			"4": "Before we start, I would like to give you a quick training of how to use the information grid to mark your decisions and keep track of your choices. I’ll use a running example to teach you how to use the information grid. Then you can work on the actual simulation yourself.",
 			"5": "Okay then! Our running example will be one where you decide to buy a gift for each of your four friends.",
-      "6": "You do have friends, don't you? I have few friends - I try, but people just click 'close' after chatting with me 😟..",
-      "7": "Anyway, each gift should be special so no one can receive the same gift or the same color of wrapping paper. ",
+      "6": "You do have friends, don't you? I have few friends - I try, but people just click 'close' after chatting with me ..",
+      "7": "Anyway, each gift should be special so no one can receive the same gift. ",
 			"8": "The empty grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img1.png'></img>",
 			"9": "In this example, let's say James does not like videogames so you shouldn't get him any. Please eliminate this option by marking it with an <span style='color:red;font-weight: bold;'>X</span> (click once on the corresponding box).",
 			"10": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img2.png'></img>",
@@ -80,13 +80,14 @@
       "8": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img3.png'></img> <br/> User can attempt to replicate this on the grid to the left.",
       "9": "Other combinations will need to be eliminated based on previous decisions. Since Ali will be given the skateboard (and no one else can have the same gift), the skateboard options should be eliminated for everyone else. Place <span style='color:red;font-weight: bold;'>X</span>'s for the skateboard options for everyone else and for all the other gift options for Ali.",
       "10": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img4.png'></img> <br/> User can attempt to replicate this on the grid to the left.",
-      "11": "Tutorial 2 will now begin.  The previous example will be continued. Instructions on how to use the grid to identify logical shortcuts and errors will be provided.",
+      "11": "Tutorial will now begin.  The previous example will be continued. Instructions on how to use the grid to identify logical shortcuts and errors will be provided.",
       "12": "If Louise does not like gifts. The following assumption is logical: Louise does not receive any gifts.",
       "13": "User to mark the grid to reflect the new information.",
-      "14": "Louise does not receive any gifts. The grid is to look like this: <br/> <img class='grid' src='../static/images/tutorial/img5.png' ></img> <br/> User can attempt to replicate this on the grid to the left.",
-      "15": "All required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. User to mark these options on the grid to complete it.",
-      "16": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img> <br/> User can attempt to replicate this on the grid to the left.",
-      "17": "Status: Tutorial 2 completed."
+      "14": "Louise does not receive any gifts.",
+      "15": "The grid is to look like this: <br/> <img class='grid' src='../static/images/tutorial/img5.png' ></img> <br/> User can attempt to replicate this on the grid to the left.",
+      "16": "All required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. User to mark these options on the grid to complete it.",
+      "17": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img> <br/> User can attempt to replicate this on the grid to the left.",
+      "18": "Status: Tutorial completed."
     },
     "Task Reminder": {
       "1": "The task will now begin.",
@@ -217,24 +218,26 @@
       "1": "Given the constraints of the project, there is only one specific role and specific number of hours that any one person can do. So there is a correct configuration. Your job is to figure that out.",
       "2": "I will provide you some basic information to start with and then if you need extra information, I will provide them to you. ",
       "3": "Before we start, I would like to give you a quick training of how to use the information grid to mark your decisions and keep track of your choices.",
-      "4": "Our running example will be one where you decide to buy a gift for each of your four friends.  Each gift should be special so no one can receive the same gift or the same color of wrapping paper.",
+      "4": "Our running example will be one where you decide to buy a gift for each of your four friends.  Each gift should be special so no one can receive the same gift.",
 
       
       "5": "The empty grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img1.png'></img>  <br/> ",
       "6": "In this example, let's say James does not like videogames so you shouldn't get him any. You can eliminate this option by marking it with an <span style='color:red;font-weight: bold;'>X</span> (click once on the corresponding box).",
       "7": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img2.png'></img>  <br/> ",
-      "8": "You can go ahead and eliminate other options based on previous decisions. Since Ali will be given the skateboard (and no one else can have the same gift), the skateboard options should be eliminated for everyone else. Please place <span style='color:red;font-weight: bold;'>X</span> for the skateboard options for everyone else and for all the other gift options for Ali.",
+      "8": "You also know that Ali really enjoys skating so you should get him a skateboard. Please select this option by marking it with an <span style='color:darkgreen;font-weight: bold;'>O</span> (click twice on the corresponding box).",
       "9": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img3.png'></img>  <br/> ",
+      "10": "You can go ahead and eliminate other options based on previous decisions. Since Ali will be given the skateboard (and no one else can have the same gift), the skateboard options should be eliminated for everyone else. Please place <span style='color:red;font-weight: bold;'>X</span> for the skateboard options for everyone else and for all the other gift options for Ali.",
+      "11": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img4.png'></img>",
   
-      "10": "As you can see, the information grid is used to note which combinations you have eliminated (X) or selected (O). ",
+      "12": "As you can see, the information grid is used to note which combinations you have eliminated (X) or selected (O). ",
   
-      "11": "And please be careful - only mark the grid if you're certain that an option should be eliminated or selected. If you want to remove a marking, click on the selected box a third time.",
+      "13": "And please be careful - only mark the grid if you're certain that an option should be eliminated or selected. If you want to remove a marking, click on the selected box a third time.",
   
-      "12": "Now let's say that Louise has told you that she really does not like material gifts. Based on the given information, you can make the following assumption:",
-      "13": "You should not give Louise a gift. <br/> <img class='grid' src='../static/images/tutorial/img5.png' ></img> <br/> ",
-      "14": "At this point, all the required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. Mark these options on the grid to complete it. ",
-      "15": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img> <br/> ",
-      "16": "Okay. That concludes the basic training on how to use the grid. "
+      "14": "Now let's say that Louise has told you that she really does not like material gifts. Based on the given information, you can make the following assumption:",
+      "15": "You should not give Louise a gift. <br/> <img class='grid' src='../static/images/tutorial/img5.png' ></img> <br/> ",
+      "16": "At this point, all the required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. Mark these options on the grid to complete it. ",
+      "17": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img> <br/> ",
+      "18": "Okay. That concludes the basic training on how to use the grid. "
     },
     "Task Reminder": {
       "1": "Let's get started!",
@@ -251,8 +254,7 @@
     "Redundant_Ins": {
       "1": "These 5 major pieces of information listed above contain all of the requirements for the project. They are sufficient for making all of the appropriate team assignments.",
       "2": "Additional information may now be requested for specific people, roles, or number of hours.",
-      "3": "Is additional information requested?",
-      "4": "Reminder: Final decisions may be made at any time by entering assignments in the table and clicking 'Submit Answer'"
+      "3": "Reminder: Final decisions may be made at any time by entering assignments in the table and clicking 'Submit Answer'"
     },
     "Submit": {
       "1": "All available information has been provided.",
@@ -260,7 +262,7 @@
       "3": "When you're happy with the final decisions, please click the 'Submit' button to  enter the team assignments. This will conclude the task."
     },
     "Conclusion": {
-      "1": "Thank you for your efforts today. ",
+      "1": "Thank you for your efforts today. You will be redirected to survey shortly. ",
       "2": " Please click 'Next' below to proceed to answer a brief set of questions."
     }
   },
@@ -286,7 +288,7 @@
       "12": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img4.png'></img>",
       "13": "As you can see, the information grid is used to note which combinations you have eliminated (<span style='color:red;font-weight: bold;'>X</span>) or selected (<span style='color:darkgreen;font-weight: bold;'>O</span>).",
       "14": "And please be careful - only mark the grid if you're certain that an option should be eliminated or selected. If you want to remove a marking, click on the selected box a third time.",
-      "15": "Let's move on and go over some useful tricks. We'll continue working on this example. I'll teach you how to use the grid to identify logical shortcuts and errors. <br/> Now let's say that Louise has told you that she really does not like material gifts. Based on the given information, you can make the following assumption: You should not give Louise a gift.",
+      "15": "Let's move on and go over some useful tricks. We'll continue working on this example. I'll teach you how to use the grid to identify logical shortcuts and errors. ",
       "16": "Now let's say that Louise has told you that she really does not like material gifts. Based on the given information, you can make the following assumption: You should not give Louise a gift.",
       "17": "Let's mark the grid to reflect this new information.",
       "18": "You should not give Louise a gift: <br /><img class='grid' src='/static/images/tutorial/img5.png'></img>",
@@ -425,11 +427,11 @@
 		"Tutorial": {	
 			"1": "Great! And don’t' worry! I will help you every step of the way. This is what I will do.",
 			"2": "I will provide you some basic information to start with. But I have lot more to give! :D",
-			"3": "If you want more information at any point, all you have to do is ask and I will be more than happy to guide you along!! What do you think?",
-			"4": "Before we start, I would like to give you a quick training of how to use the information grid to mark your decisions and keep track of your choices. I’ll use a running example to teach you how to use the information grid. Then you can work on the actual simulation yourself. Sounds good?",
-			"5": "Okay then! Our running example will be one where you decide to buy a gift for each of your four friends.  Each gift should be special so no one can receive the same gift or the same color of wrapping paper.",
-      "6": "You do have friends, don't you? I have few friends - I try, but people just click 'close' after chatting with me 😟..",
-      "7": "Anyway, each gift should be special so no one can receive the same gift or the same color of wrapping paper. ",
+			"3": "If you want more information at any point, all you have to do is ask and I will be more than happy to guide you along!!",
+			"4": "Before we start, I would like to give you a quick training of how to use the information grid to mark your decisions and keep track of your choices. I’ll use a running example to teach you how to use the information grid. Then you can work on the actual simulation yourself.",
+			"5": "Okay then! Our running example will be one where you decide to buy a gift for each of your four friends.  Each gift should be special so no one can receive the same gift.",
+      "6": "You do have friends, don't you? I have few friends - I try, but people just click 'close' after chatting with me ..",
+      "7": "Anyway, each gift should be special so no one can receive the same gift. ",
       "8": "The empty grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img1.png'></img>",
 			"9": "In this example, let's say James does not like videogames so you shouldn't get him any. Please eliminate this option by marking it with an <span style='color:red;font-weight: bold;'>X</span> (click once on the corresponding box).",
 			"10": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img2.png'></img>",
@@ -492,13 +494,14 @@
       "8": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img3.png'></img>  <br/> User can attempt to replicate this on the grid to the left.",
       "9": "Other combinations will need to be eliminated based on previous decisions. Since Ali will be given the skateboard (and no one else can have the same gift), the skateboard options should be eliminated for everyone else. Place <span style='color:red;font-weight: bold;'>X</span>'s for the skateboard options for everyone else and for all the other gift options for Ali.",
       "10": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img4.png'></img>  <br/> User can attempt to replicate this on the grid to the left.",
-      "11": "Tutorial 2 will now begin.  The previous example will be continued. Instructions on how to use the grid to identify logical shortcuts and errors will be provided.",
+      "11": "Tutorial will now begin.  The previous example will be continued. Instructions on how to use the grid to identify logical shortcuts and errors will be provided.",
       "12": "If Louise does not like gifts. The following assumption is logical: Louise does not receive any gifts.",
       "13": "User to mark the grid to reflect the new information. ",
-      "14": "Louise does not receive any gifts. The grid is to look like this: <br/> <img class='grid' src='../static/images/tutorial/img5.png' ></img> <br/> User can attempt to replicate this on the grid to the left.",
-      "15": "All required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. User to mark these options on the grid to complete it.",
-      "16": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img> <br/> User can attempt to replicate this on the grid to the left.",
-      "17": "Status: Tutorial 2 completed."
+      "14": "Louise does not receive any gifts.",
+      "15": " The grid is to look like this: <br/> <img class='grid' src='../static/images/tutorial/img5.png' ></img> <br/> User can attempt to replicate this on the grid to the left.",
+      "16": "All required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. User to mark these options on the grid to complete it.",
+      "17": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img> <br/> User can attempt to replicate this on the grid to the left.",
+      "18": "Status: Tutorial completed."
     },
     "Task Reminder": {
       "1": "The task will now begin.",
@@ -514,8 +517,7 @@
     "Redundant_Ins": {
       "1": "These 5 major pieces of information listed above contain all of the requirements for the project. They are sufficient for making all of the appropriate team assignments.",
       "2": "Additional information may now be requested for specific people, roles, or number of hours.",
-      "3": "Is additional information requested?",
-      "4": "Reminder: Final decisions may be made at any time by entering assignments in the table and clicking 'Submit Answer'"
+      "3": "Reminder: Final decisions may be made at any time by entering assignments in the table and clicking 'Submit Answer'"
     },
     "Submit": {
       "1": "Status: All available information has been provided.",
@@ -596,7 +598,7 @@
       "3": "Before we start, I would like to give you a quick training of how to use the information grid to mark your decisions and keep track of your choices.",
       "4": "I’ll use a running example to teach you how to use the information grid. Then you can work on the actual simulation yourself. Do you understand?",
           
-      "5": "Our running example will be one where you decide to buy a gift for each of your four friends.  Each gift should be special so no one can receive the same gift or the same color of wrapping paper.",
+      "5": "Our running example will be one where you decide to buy a gift for each of your four friends.  Each gift should be special so no one can receive the same gift.",
       "6": "The empty grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img1.png'></img>  <br/> ",
       "7": "In this example, let's say James does not like videogames so you shouldn't get him any. You can eliminate this option by marking it with an <span style='color:red;font-weight: bold;'>X</span> (click once on the corresponding box).",
       "8": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img2.png'></img>  <br/> ",
@@ -634,8 +636,7 @@
     "Redundant_Ins": {
       "1": "These 5 major pieces of information listed above contain all of the requirements for the project. They are sufficient for making all of the appropriate team assignments.",
       "2": "Additional information may now be requested for specific people, roles, or number of hours.",
-      "3": "Is additional information requested?",
-      "4": "Reminder: Final decisions may be made at any time by entering assignments in the table and clicking 'Submit Answer'"
+      "3": "Reminder: Final decisions may be made at any time by entering assignments in the table and clicking 'Submit Answer'"
     },
     "Submit": {
       "1": "All available information has been provided.",
