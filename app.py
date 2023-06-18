@@ -84,7 +84,7 @@ class Chatbot:
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
         username = 'it-dci'
-        password = 'Revanth1@#'
+        password = 'Mumachat@123'
         driver= '{ODBC Driver 17 for SQL Server}'
         #sessionId = ''
         conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
@@ -118,7 +118,7 @@ class Chatbot:
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
         username = 'it-dci'
-        password = 'Revanth1@#'
+        password = 'Mumachat@123'
         driver= '{ODBC Driver 17 for SQL Server}'
         conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
         cursor = conn.cursor()
@@ -141,7 +141,7 @@ class Chatbot:
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
         username = 'it-dci'
-        password = 'Revanth1@#'
+        password = 'Mumachat@123'
         driver= '{ODBC Driver 17 for SQL Server}'
         #sessionId = ''
         conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
@@ -175,7 +175,7 @@ class Chatbot:
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
         username = 'it-dci'
-        password = 'Revanth1@#'
+        password = 'Mumachat@123'
         driver= '{ODBC Driver 17 for SQL Server}'
         #sessionId = ''
         conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
@@ -200,7 +200,7 @@ class Chatbot:
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
         username = 'it-dci'
-        password = 'Revanth1@#'
+        password = 'Mumachat@123'
         driver= '{ODBC Driver 17 for SQL Server}'
         #sessionId = ''
         row = ''
